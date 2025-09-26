@@ -17,3 +17,8 @@ enabled = true
 binding = "DB"
 database_name = "potato"
 database_id = "d639b441-80d4-4caf-b06c-b592087310df"
+
+
+[[env.production.r2_buckets]]
+binding = "POTATO"
+bucket_name = "potato"
