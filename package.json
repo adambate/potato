@@ -20,7 +20,6 @@
 		"@cloudflare/workers-types": "^4.20250418.0",
 		"@eslint/compat": "^1.2.5",
 		"@eslint/js": "^9.18.0",
-		"@kinde-oss/kinde-auth-sveltekit": "^2.1.0",
 		"@lucide/svelte": "^0.501.0",
 		"@sveltejs/adapter-auto": "^4.0.0",
 		"@sveltejs/adapter-cloudflare": "^7.0.1",

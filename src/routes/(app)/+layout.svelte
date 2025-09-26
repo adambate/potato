@@ -1,35 +1,23 @@
 <script lang="ts">
-	import CircleUser from 'lucide-svelte/icons/circle-user';
 	import Menu from 'lucide-svelte/icons/menu';
 
-	import * as DropdownMenu from '$lib/components/ui/dropdown-menu/index.js';
 	import * as Sheet from '$lib/components/ui/sheet/index.js';
 	import { buttonVariants } from '$lib/components/ui/button';
-	import { goto } from '$app/navigation';
 	import { page } from '$app/state';
 	import { cn } from '$lib/utils';
 	import { Toaster } from '$lib/components/ui/sonner';
-	import * as Avatar from '$lib/components/ui/avatar';
 
 	let { children, data } = $props();
 
 	type NavItem = {
 		url: string;
 		label: string;
-		perm?: string;
 	};
 
-	const PARTNER_NAV: NavItem[] = [{ url: '/dashboard', label: 'Dashboard' }];
-	const TEAM_NAV: NavItem[] = [
+	const TOP_NAV: NavItem[] = [
 		{ url: '/dashboard', label: 'Dashboard' },
-		{ url: '/team/tool', label: 'Tools' },
+		{ url: '/tools', label: 'Tools' },
 	];
-	const TOP_NAV = data.permissions.has('team:access')
-		? TEAM_NAV.filter((x) => !x.perm || data.permissions.has(x.perm))
-		: PARTNER_NAV;
-	function logout() {
-		goto(`/api/auth/logout`);
-	}
 </script>
 
 <Toaster />
@@ -83,26 +71,6 @@
 			</Sheet.Content>
 		</Sheet.Root>
 		<div class="flex w-full items-center gap-4 md:ml-auto md:gap-2 lg:gap-4">
-			<DropdownMenu.Root>
-				<DropdownMenu.Trigger class="ml-auto size-10 rounded-full">
-					<Avatar.Root>
-						<Avatar.Fallback>
-							{#if data.initials}
-								{data.initials}
-							{:else}
-								<CircleUser class="h-5 w-5" />
-							{/if}
-						</Avatar.Fallback>
-						<Avatar.Image src={data.avatar} alt="User gravatar" />
-					</Avatar.Root>
-					<span class="sr-only">Toggle user menu</span>
-				</DropdownMenu.Trigger>
-				<DropdownMenu.Content align="end">
-					<DropdownMenu.Label>{data.user?.given_name} {data.user?.family_name}</DropdownMenu.Label>
-					<DropdownMenu.Separator />
-					<DropdownMenu.Item onclick={logout}>Sign out</DropdownMenu.Item>
-				</DropdownMenu.Content>
-			</DropdownMenu.Root>
 		</div>
 	</header>
 	<main class="flex flex-1 flex-col gap-4 p-4 md:gap-8 md:p-8">
