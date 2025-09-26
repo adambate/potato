@@ -14,10 +14,7 @@
 		label: string;
 	};
 
-	const TOP_NAV: NavItem[] = [
-		{ url: '/dashboard', label: 'Dashboard' },
-		{ url: '/tools', label: 'Tools' },
-	];
+	const TOP_NAV: NavItem[] = [];
 </script>
 
 <Toaster />
