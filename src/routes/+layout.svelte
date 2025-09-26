@@ -5,7 +5,7 @@
 </script>
 
 <svelte:head>
-	<title>{page.data.title || 'Stack App'}</title>
+	<title>{page.data.title || 'Potato Fan Club: Potato Generator'}</title>
 	{#if page.data.metadesc}
 		<meta name="description" content={page.data.metadesc} />
 	{/if}
